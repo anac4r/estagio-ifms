@@ -1,0 +1,37 @@
+create table pessoa(
+	id  INT NOt NULL AUTO_INCREMENT,
+	nome varchar (150) not null,
+	cpf varchar(14) not null,
+	senha varchar(100) not null,
+	email varchar (150) not null,
+    CONSTRAINT pk_pessoa PRIMARY KEY (id)
+);
+
+
+create table aluno(
+id INT NOt NULL AUTO_INCREMENT,
+nome varchar(100),
+cpf varchar(30),
+email varchar(100),
+senha varchar(20),
+curso varchar(40),
+situacao varchar(200),
+ano_semestre_ingresso varchar(20),
+CONSTRAINT pk_aluno PRIMARY KEY (id));
+
+create table vaga(
+id INT NOt NULL AUTO_INCREMENT,
+curso varchar (50),
+turno varchar (50),
+descricao varchar (500),
+    constraint pk_vaga PRIMARY KEY (id)
+);
+
+create table vagaAluno(
+id INT NOt NULL AUTO_INCREMENT,
+idVaga int NOt NULL,
+idAluno int NOt NULL,
+constraint fk_vagaAluno_vaga foreign key(idVaga) references vaga(id),
+constraint fk_vagaAluno_pessoa foreign key(idAluno) references aluno(id),
+constraint pk_vagaAluno PRIMARY KEY (id)
+);
